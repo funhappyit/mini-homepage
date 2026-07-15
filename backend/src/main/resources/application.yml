@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: mini-homepage
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3316}/${DB_NAME:mini_homepage}?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${DB_USERNAME:mini_homepage}
+    password: ${DB_PASSWORD:mini_homepage}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+app:
+  admin:
+    seed-username: ${ADMIN_SEED_USERNAME:admin}
+    seed-password: ${ADMIN_SEED_PASSWORD:}
+  jwt:
+    secret: ${JWT_SECRET:}
+    access-token-expiration-ms: ${JWT_ACCESS_EXPIRATION_MS:1800000}
+    refresh-token-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:1209600000}

@@ -18,7 +18,7 @@
 | 분류 | 기술 |
 |------|------|
 | Language | Java 21 |
-| Framework | Spring Boot 3.x |
+| Framework | Spring Boot 4.1.0 |
 | 인증 | JWT (관리자 전용, Access + Refresh Token) · Spring Security |
 | DB | MySQL (Aiven) |
 | Cache | Redis (방문자 카운터, Upstash) |
@@ -131,7 +131,7 @@ visit_log
 ### 1. 인프라 실행
 ```bash
 docker compose up -d
-# MySQL: localhost:3307
+# MySQL: localhost:3316 (로컬 환경의 다른 프로젝트와 포트 충돌을 피하기 위해 3307 대신 사용)
 ```
 
 ### 2. 백엔드 실행
