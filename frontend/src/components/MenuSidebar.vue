@@ -5,10 +5,6 @@ const navLinks = [
   { to: '/', label: '홈' },
   { to: '/profile', label: '프로필' },
   { to: '/diary', label: '다이어리' },
-  { to: '/favorites', label: '즐겨찾기' },
-  { to: '/photo', label: '사진첩' },
-  { to: '/board', label: '게시판' },
-  { to: '/video', label: '동영상' },
   { to: '/guestbook', label: '방명록' },
 ]
 </script>
