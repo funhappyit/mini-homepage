@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import miniroomImage from '../assets/miniroom-pixel.png'
 // CSS/SVG로 간이 표현한 아이소메트릭 미니룸 (실제 이미지 파일 미사용)
 </script>
 
 <template>
   <div class="room-scene">
+    <img class="room-image" :src="miniroomImage" alt="파란 침대와 책장이 있는 미니룸" />
     <div class="wall wall-left" />
     <div class="wall wall-right" />
     <div class="window">
@@ -31,8 +33,9 @@
   position: relative;
   width: 100%;
   max-width: none;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2.24 / 1;
   margin: 0 auto;
+  background: #fff;
   border: 1px solid #b7b7b7;
   border-radius: 0;
   overflow: hidden;
@@ -47,13 +50,13 @@
 
 .wall-left {
   left: 0;
-  background: #cfe6ee;
+  background: #d7e5ec;
   clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
 }
 
 .wall-right {
   right: 0;
-  background: #bcdce8;
+  background: #c6dce7;
   clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
 }
 
@@ -63,7 +66,7 @@
   left: 0;
   width: 100%;
   height: 40%;
-  background: #dcdcdc;
+  background: #d9d9d9;
   clip-path: polygon(0 40%, 50% 20%, 100% 40%, 100% 100%, 0 100%);
 }
 
@@ -73,9 +76,9 @@
   left: 8%;
   width: 26%;
   height: 26%;
-  background: #eaf6f8;
-  border: 3px solid #fff;
-  box-shadow: 0 0 0 2px #55c0dc;
+  background: #edf6f8;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 3px #72bedb;
 }
 
 .mullion-v,
@@ -106,8 +109,8 @@
   right: 6%;
   width: 20%;
   height: 34%;
-  background: #b47b56;
-  border: 2px solid #8a5a3b;
+  background: #aa805f;
+  border: 3px solid #825e43;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -115,8 +118,8 @@
 }
 
 .bookshelf span {
-  height: 2px;
-  background: #8a5a3b;
+  height: 3px;
+  background: #825e43;
 }
 
 .bed {
@@ -126,8 +129,8 @@
   width: 34%;
   height: 20%;
   background: #fff;
-  border: 2px solid #737373;
-  border-radius: 4px;
+  border: 3px solid #707070;
+  border-radius: 6px;
 }
 
 .pillow {
@@ -136,8 +139,8 @@
   left: 6%;
   width: 26%;
   height: 60%;
-  background: #eaf6f8;
-  border-radius: 4px;
+  background: #edf6f8;
+  border-radius: 6px;
 }
 
 .blanket {
@@ -146,8 +149,8 @@
   right: 0;
   width: 60%;
   height: 70%;
-  background: #55c0dc;
-  border-radius: 4px 0 0 0;
+  background: #79b9d6;
+  border-radius: 7px 0 0 0;
 }
 
 .rug {
@@ -156,7 +159,7 @@
   left: 42%;
   width: 32%;
   height: 12%;
-  background: #eaf6f8;
+  background: #eff8fa;
   border-radius: 999px;
   opacity: 0.8;
 }
@@ -165,6 +168,17 @@
   position: absolute;
   bottom: 10%;
   right: 10%;
-  font-size: 26px;
+  font-size: clamp(22px, 2.2vw, 34px);
+}
+
+.room-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.room-scene > :not(.room-image) {
+  display: none;
 }
 </style>
