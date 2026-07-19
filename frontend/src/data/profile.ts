@@ -5,6 +5,8 @@ export interface ProfileData {
   bio: string
   skills: string[]
   contacts: { label: string; value: string; href?: string }[]
+  diaryTitle: string
+  moodLines: string[]
 }
 
 // [임시] 실제 프로필 정보로 교체 필요
@@ -18,4 +20,6 @@ export const profile: ProfileData = {
     { label: 'Email', value: '[임시] example@email.com', href: 'mailto:example@email.com' },
     { label: 'GitHub', value: '[임시] github.com/your-id', href: 'https://github.com' },
   ],
+  diaryTitle: '[임시] 오늘의 이야기',
+  moodLines: ['[임시] 오늘도', '즐거운 하루', '보내세요 ✨'],
 }

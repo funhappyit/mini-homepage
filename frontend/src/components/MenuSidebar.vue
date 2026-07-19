@@ -21,8 +21,13 @@ const navLinks = [
 .nav-tabs {
   display: flex;
   flex-direction: column;
-  border-radius: 8px;
-  overflow: hidden;
+  gap: 4px;
+  padding-top: 7px;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: -52px;
+  width: 54px;
 }
 
 .nav-tabs a {
@@ -31,14 +36,11 @@ const navLinks = [
   background: var(--tab-bg);
   color: #fff;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 12px;
   text-decoration: none;
-  padding: 9px 4px;
-  border-top: 1px solid rgba(255, 255, 255, 0.25);
-}
-
-.nav-tabs a:first-child {
-  border-top: none;
+  padding: 7px 2px;
+  border: 1px solid #18516f;
+  border-radius: 4px 0 0 4px;
 }
 
 .nav-tabs a:hover {
@@ -46,7 +48,14 @@ const navLinks = [
 }
 
 .nav-tabs a.router-link-exact-active {
-  background: var(--tab-active);
-  color: #fff;
+  position: relative;
+  z-index: 1;
+  margin-left: -9px;
+  padding-left: 11px;
+  background: var(--card-bg);
+  color: var(--tab-active);
+  border: 2px solid var(--card-border);
+  border-left: none;
+  border-radius: 8px;
 }
 </style>

@@ -91,27 +91,27 @@ const recommendedBgm = [
   display: flex;
   flex-direction: column;
   font-size: 12px;
-  border-radius: 10px;
+  border-radius: 3px;
   overflow: hidden;
-  border: 1px solid var(--card-border);
+  border: 1px solid #5e5e5e;
 }
 
 .fw-header {
-  background: var(--tab-bg);
+  background: #555;
   color: #fff;
   font-family: var(--font-cute);
   font-weight: 700;
   font-size: 12px;
   text-align: center;
-  padding: 5px;
+  padding: 4px;
 }
 
 .fw-body {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   background: var(--card-bg);
-  padding: 6px 8px;
+  padding: 5px 7px;
 }
 
 .fw-block {

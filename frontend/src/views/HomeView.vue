@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { profile } from '../data/profile'
 import MiniRoomIllustration from '../components/MiniRoomIllustration.vue'
 import { fetchDiaryList, type DiaryEntry } from '../api/diary'
 import { fetchGuestbook, type GuestbookEntry } from '../api/guestbook'
@@ -16,7 +15,7 @@ onMounted(async () => {
     latestDiary.value = []
   }
   try {
-    latestGuestbook.value = (await fetchGuestbook()).slice(0, 1)
+    latestGuestbook.value = (await fetchGuestbook()).slice(0, 3)
   } catch {
     latestGuestbook.value = []
   }
@@ -25,14 +24,14 @@ onMounted(async () => {
 
 <template>
   <section class="home">
-    <div class="news retro-frame">
-      <h2>📰 Updated news</h2>
+    <div class="news">
+      <h2 class="section-title">Updated news</h2>
       <ul class="news-list">
         <li v-for="entry in latestDiary" :key="`d-${entry.id}`">
-          <RouterLink :to="`/diary/${entry.id}`">📔 {{ entry.title }}</RouterLink>
+          <RouterLink :to="`/diary/${entry.id}`">·[다이어리] {{ entry.title }}</RouterLink>
         </li>
         <li v-for="entry in latestGuestbook" :key="`g-${entry.id}`">
-          <RouterLink to="/guestbook">📮 {{ entry.nickname }}님이 방명록을 남겼어요</RouterLink>
+          <RouterLink to="/guestbook">·[방명록] {{ entry.nickname }}님이 글을 남겼어요</RouterLink>
         </li>
         <li v-if="latestDiary.length === 0 && latestGuestbook.length === 0" class="empty">
           아직 새 소식이 없어요.
@@ -40,20 +39,25 @@ onMounted(async () => {
       </ul>
     </div>
 
-    <div class="room retro-frame">
-      <h2>🏠 {{ profile.nickname }}의 미니룸</h2>
-      <MiniRoomIllustration />
-      <div class="room-links">
-        <span>[ 미니룸수 0 ]</span>
-        <span>[ 일촌맺기 ]</span>
-        <span>[ 미니룸 달성기록 ]</span>
+    <div class="room">
+      <div class="section-header">
+        <h2 class="section-title">Miniroom</h2>
+        <span class="section-caption">그저 멍하니 하늘만 바라봐</span>
       </div>
+      <MiniRoomIllustration />
     </div>
 
-    <div class="profile-card retro-frame">
-      <p class="status">💬 {{ profile.statusMessage }}</p>
-      <p class="bio">{{ profile.bio }}</p>
-      <RouterLink to="/profile" class="retro-button">프로필 더보기</RouterLink>
+    <div class="friends-say">
+      <div class="section-header">
+        <h2 class="section-title">What friends say</h2>
+        <span class="section-caption">한마디씩 표현해보자~</span>
+      </div>
+      <ul class="friends-list">
+        <li v-for="entry in latestGuestbook" :key="entry.id">
+          {{ entry.content }} <span class="who">({{ entry.nickname }})</span>
+        </li>
+        <li v-if="latestGuestbook.length === 0" class="empty">아직 남겨진 말이 없어요.</li>
+      </ul>
     </div>
   </section>
 </template>
@@ -62,17 +66,46 @@ onMounted(async () => {
 .home {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  height: 100%;
+  gap: 7px;
+}
+
+.section-title {
+  font-family: var(--font-cute);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 2px solid #c4c4c4;
+  padding: 0 0 3px;
+}
+
+.section-caption {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.news {
+  flex: 0 0 103px;
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 5px;
 }
 
 .news-list {
   list-style: none;
   padding: 0;
-  margin: 8px 0 0;
+  margin: 5px 0 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  font-size: 13px;
+  gap: 3px;
+  font-size: 12px;
 }
 
 .news-list a {
@@ -84,28 +117,37 @@ onMounted(async () => {
   opacity: 0.7;
 }
 
-.room-links {
+.friends-list {
+  list-style: none;
+  margin: 5px 0 0;
+  padding: 0;
   display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 10px;
-  font-size: 11px;
-  color: var(--text-h);
-  opacity: 0.8;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
 }
 
-.profile-card {
-  text-align: center;
+.who {
+  color: var(--text-muted);
+  font-size: 12px;
 }
 
-.status {
-  font-family: var(--font-cute);
-  font-size: 16px;
-  color: var(--text-h);
+.room {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.bio {
-  margin: 8px 0 16px;
-  white-space: pre-line;
+.room :deep(.room-scene) {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-width: none;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.friends-say {
+  flex: 0 0 67px;
 }
 </style>

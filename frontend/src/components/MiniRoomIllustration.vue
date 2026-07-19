@@ -30,9 +30,12 @@
 .room-scene {
   position: relative;
   width: 100%;
-  max-width: 520px;
-  aspect-ratio: 4 / 3;
+  max-width: none;
+  aspect-ratio: 16 / 9;
   margin: 0 auto;
+  border: 1px solid #b7b7b7;
+  border-radius: 0;
+  overflow: hidden;
 }
 
 .wall {
@@ -44,13 +47,13 @@
 
 .wall-left {
   left: 0;
-  background: #f6d9e6;
+  background: #cfe6ee;
   clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 90%);
 }
 
 .wall-right {
   right: 0;
-  background: #e6d6f4;
+  background: #bcdce8;
   clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
 }
 
@@ -60,7 +63,7 @@
   left: 0;
   width: 100%;
   height: 40%;
-  background: #f0d9b8;
+  background: #dcdcdc;
   clip-path: polygon(0 40%, 50% 20%, 100% 40%, 100% 100%, 0 100%);
 }
 
@@ -70,9 +73,9 @@
   left: 8%;
   width: 26%;
   height: 26%;
-  background: #cdeef2;
+  background: #eaf6f8;
   border: 3px solid #fff;
-  box-shadow: 0 0 0 2px #d99cb5;
+  box-shadow: 0 0 0 2px #55c0dc;
 }
 
 .mullion-v,
@@ -123,7 +126,7 @@
   width: 34%;
   height: 20%;
   background: #fff;
-  border: 2px solid #e79ab5;
+  border: 2px solid #737373;
   border-radius: 4px;
 }
 
@@ -133,7 +136,7 @@
   left: 6%;
   width: 26%;
   height: 60%;
-  background: #ffe1ec;
+  background: #eaf6f8;
   border-radius: 4px;
 }
 
@@ -143,7 +146,7 @@
   right: 0;
   width: 60%;
   height: 70%;
-  background: #ffb6c1;
+  background: #55c0dc;
   border-radius: 4px 0 0 0;
 }
 
@@ -153,7 +156,7 @@
   left: 42%;
   width: 32%;
   height: 12%;
-  background: #cdeef2;
+  background: #eaf6f8;
   border-radius: 999px;
   opacity: 0.8;
 }

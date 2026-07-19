@@ -41,7 +41,7 @@ onMounted(async () => {
 }
 
 .visit-counter strong {
-  color: var(--pink-hot);
+  color: #d9435e;
 }
 
 .divider {

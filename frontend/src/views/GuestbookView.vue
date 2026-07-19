@@ -108,6 +108,7 @@ onMounted(loadEntries)
 
 .row input {
   flex: 1;
+  min-width: 0;
 }
 
 textarea {
