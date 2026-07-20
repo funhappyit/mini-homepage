@@ -28,6 +28,17 @@ export const useAuthStore = defineStore('auth', {
       this.setTokens(data)
     },
 
+    async refresh() {
+      if (!this.refreshToken) {
+        throw new Error('Refresh token is missing')
+      }
+
+      const { data } = await apiClient.post<TokenResponse>('/api/v1/auth/refresh', {
+        refreshToken: this.refreshToken,
+      })
+      this.setTokens(data)
+    },
+
     setTokens(tokens: TokenResponse) {
       this.accessToken = tokens.accessToken
       this.refreshToken = tokens.refreshToken
